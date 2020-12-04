@@ -23,18 +23,14 @@ mongoose.connection.once('open', () =>
     console.log('MongoDB connection was successful.');
 });
 
-app.get('/', (req, res) => {
-    return res.status(200).send('done');
-});
-
 app.use('/recipes', recipesRouter);
 
 if(process.env.NODE_ENV === 'production')
 {
-    app.use(express.static('client/build'));
+    app.use(express.static(path.join(__dirname, '/client/build')));
     app.get('*', (req, res) =>
     {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+        res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
     });
 }
 

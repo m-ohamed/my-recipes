@@ -6,7 +6,7 @@ const storage = multer.diskStorage(
 {
     destination: (req, file, cb) =>
     {
-        cb(null, './client/public/uploads/');
+        cb(null, './client/build/uploads/');
     },
     filename: (req, file, cb) =>
     {
@@ -52,7 +52,7 @@ router.post('/add', upload.single("image"), (req, res) =>
 
     recipeMod.save()
         .then(() => res.status(200).json('Recipe added successfully.'))
-        .catch((err) => res.status(500).json('Error adding the recipe. Error: ' + err));
+        .catch((err) => res.status(500).json('Error adding the recipe (backend). Error: ' + err));
 });
 
 router.route('/remove/:id').delete((req, res) => 

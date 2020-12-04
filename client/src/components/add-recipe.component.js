@@ -52,7 +52,7 @@ export default class AddRecipe extends React.Component
             headers: { 'content-type': 'multipart/form-data' }
         };
 
-        axios.post('http://localhost:8080/recipes/add', formData, config)
+        axios.post('/recipes/add', formData, config)
             .then(res => alert(res.data))
             .catch(err => alert('Error adding recipe. Error: ' + err));
 

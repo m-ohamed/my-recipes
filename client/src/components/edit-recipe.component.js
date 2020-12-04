@@ -22,7 +22,7 @@ export default class EditRecipe extends React.Component
 
     componentDidMount()
     {
-        axios.get('http://localhost:8080/recipes/getRecipe/' + this.props.match.params.id)
+        axios.get('/recipes/getRecipe/' + this.props.match.params.id)
             .then(res =>
                 {
                     this.setState
@@ -77,7 +77,7 @@ export default class EditRecipe extends React.Component
             headers: { 'content-type': 'multipart/form-data' }
         };
 
-        axios.post('http://localhost:8080/recipes/update/' + this.props.match.params.id, formData, config)
+        axios.post('/recipes/update/' + this.props.match.params.id, formData, config)
             .then(res => alert(res.data))
             .catch(err => alert('Error editing recipe. Error: ' + err));
 

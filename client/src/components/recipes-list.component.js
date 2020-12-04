@@ -18,7 +18,7 @@ export default class RecipesList extends React.Component
 
     componentDidMount()
     {
-        axios.get('http://localhost:8080/recipes/getAll')
+        axios.get('/recipes/getAll')
             .then(res => 
             {
                 this.setState({recipes: res.data})
@@ -31,7 +31,7 @@ export default class RecipesList extends React.Component
 
     handleRemove(recipeId)
     {
-        axios.delete('http://localhost:8080/recipes/remove/' + recipeId)
+        axios.delete('/recipes/remove/' + recipeId)
             .then(res => 
             {
                 alert(res.data);

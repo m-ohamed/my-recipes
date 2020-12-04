@@ -21,7 +21,7 @@ export default class ViewRecipe extends React.Component
 
     componentDidMount()
     {
-        axios.get('http://localhost:8080/recipes/getRecipe/' + this.props.match.params.id)
+        axios.get('/recipes/getRecipe/' + this.props.match.params.id)
             .then(res =>
                 {
                     this.setState
@@ -41,7 +41,7 @@ export default class ViewRecipe extends React.Component
     
     handleRemove()
     {
-        axios.delete('http://localhost:8080/recipes/remove/' + this.state.recipeId)
+        axios.delete('/recipes/remove/' + this.state.recipeId)
             .then(res => 
             {
                 alert(res.data);

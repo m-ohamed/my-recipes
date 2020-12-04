@@ -3,15 +3,11 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const port = process.env.PORT || '8080';
+const path = require('path');
 
 const recipesRouter = require('./routes/recipes');
 
 require('dotenv').config();
-
-if(process.env.NODE_ENV === 'production')
-{
-    app.use(express.static('client/build'));
-}
 
 app.use(cors());
 app.use(express.json());
@@ -33,6 +29,14 @@ app.get('/', (req, res) => {
 
 app.use('/recipes', recipesRouter);
 
+if(process.env.NODE_ENV === 'production')
+{
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) =>
+    {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(port, () => 
 {
